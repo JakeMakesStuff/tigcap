@@ -33,6 +33,7 @@ window.addEventListener("load", function() {
   var shortcut_text = document.getElementById("shortcut_text")
   var nothingdomains_vanity = document.getElementById("nothingdomains_vanity")
   var nothingdomains_key = document.getElementById("nothingdomains_key")
+  var elixire_key = document.getElementById("elixire_key")
 
 
   nothingdomains_key.addEventListener("change", function() {
@@ -67,6 +68,10 @@ window.addEventListener("load", function() {
     config.owoUrl = this.value
     save()
   })
+  elixire_key.addEventListener("change", function() {
+    config.elixire_key = this.value
+    save()
+  })
   shortcut_text.addEventListener("change", function() {
     config.shortcut = this.value
     save()
@@ -84,6 +89,7 @@ window.addEventListener("load", function() {
     shortcut_text.value = config.shortcut || "CommandOrControl+Shift+C"
     nothingdomains_key.value = config.nothingdomains_key
     nothingdomains_vanity.value = config.nothingdomains_vanity
+    elixire_key.value = config.elixire_key
     save()
   }
   window.reloadValues = reloadValues

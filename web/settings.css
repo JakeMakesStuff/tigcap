@@ -25,6 +25,8 @@ html, body {
 .owo .owo_only { display: inline; }
 .nothingdomains_only { display: none; }
 .nothingdomains .nothingdomains_only { display: inline; }
+.elixire_only { display: none; }
+.elixire .elixire_only { display: inline; }
 
 .form-group {
   margin-bottom: 0.5rem;
