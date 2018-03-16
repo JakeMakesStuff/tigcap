@@ -27,6 +27,9 @@ html, body {
 .nothingdomains .nothingdomains_only { display: inline; }
 .elixire_only { display: none; }
 .elixire .elixire_only { display: inline; }
+.kuvien_only { display: none; }
+.kuvien .kuvien_only { display: inline; }
+
 
 .form-group {
   margin-bottom: 0.5rem;
