@@ -18,13 +18,13 @@
   },
   "homepage": "https://github.com/theimgguru/tigcap#readme",
   "devDependencies": {
-    "babel-eslint": "^8.2.2",
-    "electron": "^1.8.4",
-    "electron-packager": "^11.1.0",
-    "eslint": "^4.18.2"
+    "babel-eslint": "^8.2.5",
+    "electron": "^2.0.3",
+    "electron-packager": "^12.1.0",
+    "eslint": "^5.0.0"
   },
   "dependencies": {
     "interactive-screenshot": "0.0.5",
-    "snekfetch": "^3.3.0"
+    "snekfetch": "^4.0.4"
   }
 }
