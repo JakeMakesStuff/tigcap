@@ -99,7 +99,7 @@ app.on("ready", function() {
   tray = new Tray(__dirname + "/resources/iconTemplate.png");
   const contextMenu = Menu.buildFromTemplate([
     { label: "Take screenshot", click: takeScreenshot },
-    { label: "My account", click: showAccountWindow },
+    // { label: "My account", click: showAccountWindow },
     { label: "Settings", click: showSettingsWindow },
     { type: "separator" },
     { label: "Quit", role: "quit" }
