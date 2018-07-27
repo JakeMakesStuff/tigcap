@@ -51,7 +51,8 @@ let defaultConfig = {
   shortcut: "CommandOrControl+Shift+C",
   nothingdomains_key: "",
   nothingdomains_vanity: "",
-  kuvien_key: ""
+  kuvien_key: "",
+  novus_token: ""
 };
 
 let config;

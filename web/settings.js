@@ -16,7 +16,8 @@ try {
     owoToken: "",
     owoUrl: "https://owo.whats-th.is/",
     shortcut: "CommandOrControl+Shift+C",
-    kuvien_key: ""
+    kuvien_key: "",
+    novus_token: ""
   };
 }
 
@@ -39,6 +40,7 @@ window.addEventListener("load", function() {
   var nothingdomains_key = document.getElementById("nothingdomains_key");
   var elixire_key = document.getElementById("elixire_key");
   var kuvien_key = document.getElementById("kuvien_key");
+  var novus_token = document.getElementById("novus_token");
 
   nothingdomains_key.addEventListener("change", function() {
     config.nothingdomains_key = this.value;
@@ -78,6 +80,10 @@ window.addEventListener("load", function() {
   });
   elixire_key.addEventListener("change", function() {
     config.elixire_key = this.value;
+    save();
+  });
+  novus_token.addEventListener("change", function() {
+    config.novus_token = this.value;
     save();
   });
   shortcut_text.addEventListener("change", function() {
