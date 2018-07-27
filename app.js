@@ -152,7 +152,11 @@ async function takeScreenshot() {
       )
     )
       return;
-    throw e;
+    new Notification({
+      title: "TIGCap",
+      body: "Failed to upload image.",
+      silent: true
+    }).show();
   }
 }
 
