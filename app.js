@@ -124,7 +124,8 @@ const hostMap = {
   srht: srhtUpload,
   owo: owoUpload,
   nothingdomains: nothingDomainsUpload,
-  elixire: elixireUpload
+  elixire: elixireUpload,
+  novus: novusUpload
 };
 
 async function takeScreenshot() {
@@ -247,6 +248,14 @@ async function kuvienUpload(buffer) {
     .set("X-App-Key", config.kuvien_key)
     .attach("file", buffer, "oof.png");
   return res.body.file.url;
+}
+
+async function novusUpload(buffer) {
+  let res = await snekfetch
+    .post("https://i.novuscommunity.co/api/upload")
+    .set("Authorization", "Bearer " + config.novus_token)
+    .attach("file", buffer, "oof.png");
+  return res.body.url;
 }
 
 app.on("window-all-closed", function() {
