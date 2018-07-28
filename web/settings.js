@@ -8,15 +8,18 @@ try {
   config = {
     img_host: "elixire",
     srht_url: "https://srht.example.org",
-    srht_key: "Example",
-    pomf_host: [
-      "https://pomf.example.org/",
-      "https://pomf-vanity.example.org/"
-    ],
+    pomf_host: ["https://pomf.example.org/", "https://pomf-vanity.example.org/"],
     owoToken: "",
     owoUrl: "https://owo.whats-th.is/",
     shortcut: "CommandOrControl+Shift+C",
-    kuvien_key: ""
+    nothingdomains_key: "",
+    nothingdomains_vanity: "",
+    kuvien_key: "",
+    ftp_hostname: "ftp.example.org",
+    ftp_username: "",
+    ftp_password: "",
+    ftp_url_path: "https://i.example.org/",
+    ftp_path: "/"
   };
 }
 
@@ -39,6 +42,11 @@ window.addEventListener("load", function() {
   var nothingdomains_key = document.getElementById("nothingdomains_key");
   var elixire_key = document.getElementById("elixire_key");
   var kuvien_key = document.getElementById("kuvien_key");
+  var ftp_hostname = document.getElementById("ftp_hostname");
+  var ftp_username = document.getElementById("ftp_username");
+  var ftp_password = document.getElementById("ftp_password");
+  var ftp_url_path = document.getElementById("ftp_url_path");
+  var ftp_path = document.getElementById("ftp_path");
 
   nothingdomains_key.addEventListener("change", function() {
     config.nothingdomains_key = this.value;
@@ -84,6 +92,26 @@ window.addEventListener("load", function() {
     config.shortcut = this.value;
     save();
   });
+  ftp_hostname.addEventListener("change", function() {
+    config.ftp_hostname = this.value;
+    save();
+  });
+  ftp_username.addEventListener("change", function() {
+    config.ftp_username = this.value;
+    save();
+  });
+  ftp_password.addEventListener("change", function() {
+    config.ftp_password = this.value;
+    save();
+  });
+  ftp_url_path.addEventListener("change", function() {
+    config.ftp_url_path = this.value;
+    save();
+  });
+  ftp_path.addEventListener("change", function() {
+    config.ftp_path = this.value;
+    save();
+  });
 
   function reloadValues() {
     srht_url.value = config.srht_url;
@@ -99,6 +127,11 @@ window.addEventListener("load", function() {
     nothingdomains_vanity.value = config.nothingdomains_vanity;
     elixire_key.value = config.elixire_key;
     kuvien_key.value = config.kuvien_key;
+    ftp_hostname.value = config.ftp_hostname || "ftp.example.org";
+    ftp_username.value = config.ftp_username || "";
+    ftp_password.value = config.ftp_password || "";
+    ftp_url_path.value = config.ftp_url_path || "https://i.example.org/";
+    ftp_path.value = config.ftp_path || "/";
     save();
   }
   window.reloadValues = reloadValues;

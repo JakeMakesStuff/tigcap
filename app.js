@@ -13,6 +13,8 @@ const {
 } = require("electron");
 let os = require("os");
 let snekfetch = require("snekfetch");
+let PromiseFtp = require('promise-ftp');
+let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 let server = "https://hazel-fyhwhtssmo.now.sh/";
 let feed = `${server}/update/${process.platform}/${app.getVersion()}`;
@@ -51,7 +53,12 @@ let defaultConfig = {
   shortcut: "CommandOrControl+Shift+C",
   nothingdomains_key: "",
   nothingdomains_vanity: "",
-  kuvien_key: ""
+  kuvien_key: "",
+  ftp_hostname: "ftp.example.org",
+  ftp_username: "",
+  ftp_password: "",
+  ftp_url_path: "https://i.example.org/",
+  ftp_path: "/"
 };
 
 let config;
@@ -124,7 +131,8 @@ const hostMap = {
   srht: srhtUpload,
   owo: owoUpload,
   nothingdomains: nothingDomainsUpload,
-  elixire: elixireUpload
+  elixire: elixireUpload,
+  ftp: FTPUpload
 };
 
 async function takeScreenshot() {
@@ -247,6 +255,38 @@ async function kuvienUpload(buffer) {
     .set("X-App-Key", config.kuvien_key)
     .attach("file", buffer, "oof.png");
   return res.body.file.url;
+}
+
+async function FTPUpload(buffer) {
+  var ftp = new PromiseFtp();
+  ftp.connect({
+    host: config.ftp_hostname,
+    user: config.ftp_username,
+    password: config.ftp_password
+  }).then(function (_) {
+    return ftp.list(config.ftp_path);
+  }).then(function (list) {
+    while(true) {
+      var filename = "";
+      for (var i = 0; i < 10; i++) {
+        filename += charset.charAt(Math.floor(Math.random() * charset.length));
+      }
+      if (!(filename + ".png" in list)) {
+        break;
+      }
+    }
+    return ftp.put(buffer, filename + ".png");
+  }).then(function() {
+    return ftp.end();
+  })
+  var return_addr = config.ftp_url_path;
+  if (!(return_addr.startsWith("http://") || return_addr.startsWith("https://"))) {
+    return_addr = "https://" + return_addr;
+  }
+  if (!return_addr.endsWith("/")) {
+    return_addr += "/";
+  }
+  return return_addr + filename + ".png";
 }
 
 app.on("window-all-closed", function() {

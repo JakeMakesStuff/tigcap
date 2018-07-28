@@ -29,6 +29,8 @@ html, body {
 .elixire .elixire_only { display: inline; }
 .kuvien_only { display: none; }
 .kuvien .kuvien_only { display: inline; }
+.ftp_only { display: none; }
+.ftp .ftp_only { display: inline; }
 
 
 .form-group {
